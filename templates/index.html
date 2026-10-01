@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CropWise | Crop Prediction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero"><p class="eyebrow">SMART AGRICULTURE</p><h1>Grow with<br><em>confidence.</em></h1><p>Use soil nutrients and local climate conditions to find crop options suited to your field.</p><div class="hero-note">✦ Data-informed recommendations</div></section>
+    <section class="panel">
+      <header><div><p class="eyebrow">FIELD ANALYSIS</p><h2>What does your soil need?</h2></div><button id="sampleBtn" class="text-button" type="button">Use sample values</button></header>
+      <form id="predictionForm">
+        <div class="form-grid">
+          <label>Nitrogen <span>N</span><input name="nitrogen" type="number" min="0" max="200" step="0.1" placeholder="e.g. 90" required><small>kg/ha</small></label>
+          <label>Phosphorus <span>P</span><input name="phosphorus" type="number" min="0" max="200" step="0.1" placeholder="e.g. 45" required><small>kg/ha</small></label>
+          <label>Potassium <span>K</span><input name="potassium" type="number" min="0" max="250" step="0.1" placeholder="e.g. 40" required><small>kg/ha</small></label>
+          <label>Temperature<input name="temperature" type="number" min="-10" max="60" step="0.1" placeholder="e.g. 27" required><small>°C</small></label>
+          <label>Humidity<input name="humidity" type="number" min="0" max="100" step="0.1" placeholder="e.g. 82" required><small>%</small></label>
+          <label>Soil pH<input name="ph" type="number" min="0" max="14" step="0.1" placeholder="e.g. 6.2" required><small>pH scale</small></label>
+          <label class="wide">Rainfall<input name="rainfall" type="number" min="0" max="500" step="0.1" placeholder="e.g. 220" required><small>mm</small></label>
+        </div>
+        <button class="submit" type="submit"><span>Find my crop</span><b>→</b></button>
+      </form>
+      <div id="result" class="result" hidden></div>
+      <p id="error" class="error" role="alert"></p>
+      <section class="history"><h3>Recent field checks</h3><div id="historyList"><p class="muted">No predictions yet.</p></div></section>
+      <p class="disclaimer">Recommendations are decision support, not a substitute for local soil testing or agronomy advice.</p>
+    </section>
+  </main><script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
